@@ -40,7 +40,7 @@ int main(int argc, char *argv[]){
                 void *dest=malloc(sizeof(q->elem_size));
                 queue_dequeue(q, dest);
                 int QuiEstCe = *(int *)dest;
-                printf("%d est sorti de la queue, p = %d\n", QuiEstCe,p);
+                printf("%d est sorti de la queue\n", QuiEstCe);
                 free(dest);
             }
         }

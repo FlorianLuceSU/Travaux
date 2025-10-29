@@ -9,7 +9,7 @@
 //array based
 
 bool is_empty(const struct Queue *q){
-    return !q;
+    return q->length==0;
 }
 
 size_t queue_length(const struct Queue *q){
@@ -33,6 +33,7 @@ struct Queue *queue_init(size_t elem_size, size_t capacity){
 
 void queue_dispose(struct Queue *q){
     if (!q){
+        printf("Erreur, pas de file\n");
         return;
     }
     free(q->data);
@@ -74,7 +75,7 @@ void queue_enqueue(struct Queue *q, const void *src){
 }
 
 void queue_dequeue ( struct Queue *q , void * dest ){
-    if(!q || q->length ==0){
+    if(!q || is_empty(q)){
         return;
     }
     void *src = (char*) q->data + q->elem_size*q->front;

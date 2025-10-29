@@ -37,6 +37,6 @@ int main(int argc, char *argv[]){
         std::cout<<"position "<<i+1<<" : "<<q->data[(q->front + i)%q->capacity]<<std::endl;
     }
     
-
+    queue_dispose(q);
     return 0;
 }

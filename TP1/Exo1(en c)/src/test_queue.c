@@ -16,9 +16,10 @@ int main(int argc, char *argv[]){
     srand(time(NULL));
     int p;
     int l_max = 0;
-    
-    
-    for(int i=0; i<atoi(argv[1]); i++){
+    int N;
+    argc<2 ? printf("Veuillez entrer un entier :\n"), scanf("%d",&N) : (N = atoi(argv[1]));
+
+    for(int i=0; i<N; i++){
         p = rand()%11;
         printf("tour %d p=%d\n",i+1,p);
         

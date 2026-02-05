@@ -1,0 +1,1337 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Introduction à Python\n",
+    "Il s'agit de regrouper la plupart des fonctions de `Python` et des modules `Numpy, Scipy, Pyplot` dont on aura besoin dans cette série de Travaux Pratiques. Il est demandé d'exécuter les instructions proposées, d'observer et commenter les résultats, de répondre aux questions posées."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Nombres et fonctions réels"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import math        # importer le module math\n",
+    "a = math.sqrt(2 * math.pi)\n",
+    "b = math.cos(a) * math.log(1 + a**2)\n",
+    "print(a, b) # affiche a et b"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from math import exp, sqrt # importer une ou des fonctions du module\n",
+    "a = exp(1)\n",
+    "print(sqrt(a))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from math import * # plus simple mais pas toujours pertinent\n",
+    "a = sqrt(2 * pi)\n",
+    "b = cos(a) * log(1 + a**2)\n",
+    "# afficher a, b"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Précision numérique"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "a = 1\n",
+    "b = 1e-16\n",
+    "c  = a + b - a\n",
+    "d = a - a + b\n",
+    "# Que valent c et d ? Les afficher."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "a, b = 1, 1e-16\n",
+    "e = (a + b - a) / b\n",
+    "# Que vaut e ? L'afficher.\n",
+    "# essayer avec b = 1e-15, 1e-14, etc... \n",
+    "# Commentaire ?"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## F-strings\n",
+    "Pratique pour afficher des variables avec des formattages spécifiques."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import math\n",
+    "n = 30\n",
+    "print(f\"L'entier n vaut = {n}\")\n",
+    "print(f\"Affiche avec 5 chiffres, n vaut = {n:05d}\")\n",
+    "print(f\"Le nombre pi vaut = {math.pi}\")\n",
+    "print(f\"Avec 4 chiffres apres la virgule, pi = {math.pi:.4f}\")\n",
+    "# afficher exponentielle de 1 avec 8 chiffres apres la virgule"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## List, tuples, set\n",
+    "Liste"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "L1 = [-2, 2, 1, 4]\n",
+    "L1[1] = -1\n",
+    "print(f\"L1 = {L1}\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Tuple"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "T = (-2, 2, 1, 4)\n",
+    "T[1] = -1"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Opérations sur les listes"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "L2 = L1+L1 # afficher L2, que fait l'addition de deux listes ?\n",
+    "L3 = L1 * 3 # afficher L3, que fait la multiplication par trois ?"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Tri de liste"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "L = [3, 2 , 1, 4 ] # afficher L apres sa declaration\n",
+    "L.sort() # afficher L apres le tri\n",
+    "L_tuple = [('miaou', 4), ('chien', 3), ('chat', 2)] # comment trier cette liste ?\n",
+    "L_tuple.sort(key=lambda x: x[1]) # que veut dire key=lambda x: x[1] ?"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Compréhension de liste"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "H = [t * t for t in L1] # comparer les listes L1 et H"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Set (ensemble)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "S = set(H)  # comparer la liste H et le \"set\" S"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Tests, boucles, fonctions\n",
+    "Boucle for"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "L1 = []\n",
+    "for k in range(6):\n",
+    "    print(k)\n",
+    "    L1.append(k**2 - 3.5 * k)\n",
+    "for j in range(len(L1)):\n",
+    "    print(sin(L1[j])) \n",
+    "print(L1)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Boucle while (tant que)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#  Modifier ce bout de code pour qu'il affiche\n",
+    "# seulement les valeurs negatives de L1\n",
+    "k = 0\n",
+    "while (L1[k] < 0):  # rajouter   and (k <= len(L1)) \n",
+    "    print(k, L1[k])\n",
+    "    k+=1"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Fonctions"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def facto(n):\n",
+    "    \"\"\"\n",
+    "    calcul de la factorielle de l'entier n\n",
+    "    \"\"\" \n",
+    "    if type(n)!= int :\n",
+    "        print(f\"Ce n'est pas un nombre entier : {n}\")\n",
+    "    else:\n",
+    "        if n < 0:\n",
+    "            print(f\"entier negatif : {n}\")\n",
+    "        else:\n",
+    "            c = 1\n",
+    "            for i in range(2, n+1):\n",
+    "                c = c * i\n",
+    "            return c"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Obtenir des renseignements sur la fonction écrite soi-meme:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "help(facto)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Appel de la fonction"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "m = 13\n",
+    "import math\n",
+    "if facto(m)==math.factorial(m):\n",
+    "    print(\"ca a l'air de marcher!\")\n",
+    "else:\n",
+    "    print(\"ca ne marche pas!\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Fonction lambda (fonction anonyme définie en une ligne)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "f = lambda x: x**2\n",
+    "print(f(3))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Operations sur les fichiers et dossiers\n",
+    "La bibiliothèque os (Operating System)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import os"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Créer un dossier outputs dans le répertoire courant"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "os.makedirs(\"outputs\", exist_ok=True)\n",
+    "# verifier que le dossier outputs existe"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Ecrire un fichier texte dans le dossier outputs"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "with open(\"outputs/test.txt\", \"w\") as f: # w comme write\n",
+    "    f.write(\"Coucou c'est moi!\")\n",
+    "    f.write(\"Je suis le fichier test.txt\")\n",
+    "    f.write(\"Je vais revenir a la ligne \\nEt voila !\")\n",
+    "# regardez vous meme le fichier test.txt"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Lire le contenu du fichier test.txt"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "with open(\"outputs/test.txt\", \"r\") as f: # r comme read\n",
+    "    print(f.read())"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Lire ligne par ligne le fichier test.txt"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "with open(\"outputs/test.txt\", \"r\") as f: # r comme read\n",
+    "    for line in f:\n",
+    "        print(line)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Ajouter un contenu au fichier test.txt"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "with open(\"outputs/test.txt\", \"a\") as f: # a comme append\n",
+    "    f.write(\"\\nCoucou c'est encore moi revenu a la ligne!\")\n",
+    "# lire le fichier test.txt"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Supprimer le fichier test.txt (Attention, irreversible !)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "os.remove(\"outputs/test.txt\")\n",
+    "# verifier que le fichier test.txt n'existe plus"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Vecteurs, matrices"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import numpy as np # noter la difference avec l'import precedent"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Vecteurs"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# afficher ces differents vecteurs\n",
+    "S= np.zeros(5)   \n",
+    "S= np.ones(5)  \n",
+    "L = range(7, 10)  # quel est le type de L?  type(L)\n",
+    "S = np.array(L)  # quel est le type de S?\n",
+    "S = np.linspace(1, 10)\n",
+    "\n",
+    "S = np.linspace(0, np.pi, 5)\n",
+    "S = np.linspace(0, np.pi, 5)\n",
+    "T = np.sin(S)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Tableaux à deux dimensions (matrices)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# afficher ces differentes matrices et leur datatype\n",
+    "S = np.ones((3, 2))\n",
+    "print(S, S.dtype)\n",
+    "S = np.ones((3, 2), dtype=np.float64)\n",
+    "S = np.ones((3, 2), dtype=np.int32)\n",
+    "S = np.zeros((2, 3)) \n",
+    "S = np.ones((3, 2))  \n",
+    "S = np.eye(3)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Matrices initialisées aléatoirement"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "A = np.random.rand(3, 4)\n",
+    "# afficher A et ses differentes dimensions\n",
+    "a_shape = np.shape(A)\n",
+    "a_size = np.size(A) \n",
+    "a_len = len(A)\n",
+    "B = A.transpose()          # B=??"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Produit de matrices"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "A = np.array([[1, 2], [3, 4]])\n",
+    "B = np.array([[1, 0], [-1, 1]])\n",
+    "C = A * B                    # comparer\n",
+    "D = np.dot(A, B)            # les trois\n",
+    "E = A @ B                    # multiplications"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Attention au passage par adresse en Python :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "A0 = np.array([[1, 1], [1, 1]])\n",
+    "A1 = A0\n",
+    "A1[0, 0] = 0\n",
+    "print(A0) \n",
+    "print(A1) # que remarquez vous ?\n",
+    "A0[0, 0] = 888\n",
+    "print(A0) \n",
+    "print(A1) # que remarquez vous ?\n",
+    "A2 = A0.copy()\n",
+    "A2[0, 0] = 10\n",
+    "print(A0)\n",
+    "print(A2) # que remarquez vous ?"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Algèbre matricielle\n",
+    "Résolution de système linéaire"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from numpy import linalg # sous bibliotheque algebre lineaire\n",
+    "n = 3\n",
+    "A = np.random.rand(n, n)\n",
+    "b = np.random.rand(n) \n",
+    "x = linalg.solve(A, b)  # solution du systeme lineaire Ax = b\n",
+    "# afficher l'erreur entre Ax et b. Quel est l'ordre de grandeur de cette erreur ?"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Inverse, déterminant, norme matricielle"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from numpy.linalg import inv, norm, det # que font ces fonctions ?\n",
+    "n = 5               \n",
+    "A = np.random.rand(n, n)\n",
+    "det(A)\n",
+    "B = inv(A)\n",
+    "C = np.dot(A, B)\n",
+    "# afficher la norme de l'erreur entre C = A B et l'identite"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Comprendre les fonctions : help est votre ami !"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "help(norm)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Valeurs propres et vecteurs propres"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from numpy.linalg import eig    # eigenvalue : valeur propre\n",
+    "n = 3\n",
+    "A = np.random.rand(n, n)\n",
+    "D, V = eig(A)                   # Que sont D et V ?\n",
+    "k = 2\n",
+    "d, u = D[k], V[:, k] \n",
+    "z = np.dot(A, u)-d * u               # z= ??\n",
+    "print(f\" z = {norm(z):.6f}\") \n",
+    "\n",
+    "r = np.linalg.matrix_rank(A)   # rank : rang\n",
+    "\n",
+    "from scipy.linalg import null_space # null space : noyau\n",
+    "K = null_space(A)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Décomposition en valeurs singulières"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from numpy.linalg import svd\n",
+    "n = 3\n",
+    "A = np.random.rand(n, n)\n",
+    "U, S, Vh = svd(A)\n",
+    "# afficher U, S et Vh.\n",
+    "# Comment reconstruire A a partir de U, S et Vh ? (help)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Graphiques\n",
+    "Graphique d'une fonction simple"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from math import pi\n",
+    "import matplotlib.pyplot as plt\n",
+    "X = np.linspace(-1, 1, 100)      \n",
+    "Y = np.sin(4 * pi * X) * np.exp(X) \n",
+    "plt.plot(X, Y, '-r')\n",
+    "plt.xlabel('x')\n",
+    "plt.ylabel('y')\n",
+    "plt.title(r'x$\\mapsto \\sin(4\\pi x)e^{x}$')\n",
+    "plt.grid()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "Z = np.cos(4 * pi * X) * np.exp(-X)  \n",
+    "plt.plot(X, Y, '-.r', X, Z, '-b', markersize = 6)\n",
+    "plt.legend([\"f(x)\", \"g(x)\"])\n",
+    "plt.title('Afficher un texte ici')\n",
+    "plt.xlabel('x') ; plt.ylabel('y') ;  \n",
+    "plt.grid()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Lignes de niveaux"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "x = np.linspace(-1, 1)\n",
+    "y = np.linspace(-1, 1)\n",
+    "X, Y = np.meshgrid(x, y)\n",
+    "Z1 = np.exp(X)+X * Y**2-1\n",
+    "Z2 = np.sin(X+Y)+X**2-1\n",
+    "\n",
+    "plt.figure()\n",
+    "plt.axes().set_aspect('equal') # pour avoir les memes longueurs sur les axes\n",
+    "dessin = plt.contour(X, Y, Z1, levels = np.linspace(-1, 1, 9))\n",
+    "plt.clabel(dessin, fmt= '%.3f', inline = True)\n",
+    "\n",
+    "plt.figure()\n",
+    "plt.axes().set_aspect('equal')\n",
+    "dessin = plt.contour(X, Y, Z2, levels = np.linspace(-1, 1, 9))\n",
+    "plt.clabel(dessin, fmt= '%.3f', inline = True)\n",
+    "\n",
+    "# les deux sur la meme figure avec un vecteur (1, 0) au point (0, 0)\n",
+    "plt.figure()\n",
+    "plt.axes().set_aspect('equal')\n",
+    "plt.contour(X, Y, Z1, levels = np.linspace(-1, 1, 9))\n",
+    "plt.clabel(dessin, fmt= '%.3f', inline = True)\n",
+    "plt.contour(X, Y, Z2, levels = np.linspace(-1, 1, 9))\n",
+    "plt.clabel(dessin, fmt= '%.3f', inline = True)\n",
+    "plt.quiver(0, 0, 1, 0, angles='xy', scale_units='xy', scale=1, color='red')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Champ de vecteurs"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "x= np.linspace(-5, 5, 20)\n",
+    "y= np.linspace(-5, 5, 20) \n",
+    "X, Y = np.meshgrid(x, y) \n",
+    "U = X+Y\n",
+    "V = X-Y\n",
+    "plt.quiver(X, Y, U, V)   \n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Ajout d'un bruit blanc\n",
+    "Nous serons amenés à ajouter des perturbations (bruits blancs gaussiens) à des données simulées pour représenter une incertitude de mesure."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import numpy as np\n",
+    "import matplotlib.pyplot as plt\n",
+    "\n",
+    "N = 200\n",
+    "t = np.linspace(0, 20, N)\n",
+    "d = 20 * np.exp(-0.5 * t)\n",
+    "sigma = 0.5\n",
+    "d_bruit = d + sigma * np.random.randn(N)\n",
+    "# que represente np.random.randn(N) ?\n",
+    "plt.figure()\n",
+    "plt.plot(t, d_bruit, \"o\", label = \"donnees bruitees\")\n",
+    "plt.plot(t, d, \"-r\", label = \"donnees simulees\")\n",
+    "plt.xlabel(\"t\") ; plt.ylabel(\"donnees\") ;\n",
+    "plt.legend()\n",
+    "# faites varier N et sigma pour observer les differences\n",
+    "# que remarquez vous quand N varie ? et sigma ?\n",
+    "\t\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Calcul numérique de dérivées"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Différences finies"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from numpy import exp\n",
+    "# quelle est la derivee de e^x ?"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Par différences finies: approcher la dérivée de la fonction exponentielle par le taux d'accroissement avec un pas h.\n",
+    "Faire tendre h vers 0 et afficher la différence entre la dérivée exacte et la dérivée approchée.\n",
+    "On fera varier $x$ entre 0 et 2 et h de $10^{-1}$ à $10^{-10}$. Autant que possible utiliser numpy (fonctions $linspace$ et $logspace$) et éviter les boucles \"for\"."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# a vous de jouer !\n",
+    "# que constatez vous ?"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Faites la même chose avec une formule de Taylor d'ordre plus élevé."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# a vous de jouer !"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Différentiation automatique avec pytorch\n",
+    "Que fait ce petit bout de code ?"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import torch\n",
+    "x = torch.tensor(1.0, requires_grad=True)\n",
+    "y = torch.exp(x)\n",
+    "y.backward()\n",
+    "print(x.grad)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Essayons avec la dérivée d'une composition de fonctions: $ x \\mapsto x^2 \\mapsto e^{x^2} $.\n",
+    "Quelle est la dérivée de $e^{x^2}$ ? Essayer avec pytorch."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# a vous de jouer !"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Une formule plus compliquée: $ x \\mapsto x^2 \\cos(3x + 6)e^{sin(3x + 6)^2} $.\n",
+    "Avez vous envie de calculer la dérivée ? Faites-le avec pytorch. Voyez vous l'intérêt de Pytorch ?"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# a vous de jouer !"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Calcul de gradient\n",
+    "Soit $A \\in \\mathbb{R}^{n \\times n}$ une matrice.\n",
+    "Quel est le gradient de la fonction réelle $f : x \\in \\mathbb{R}^n \\mapsto \\mathbb{R}$, telle que $f(x)=\\| Ax \\|^2$ ?\n",
+    "Essayer avec $n=2$ et $A = I_2$.\n",
+    "Afficher les lignes de niveau sur le domaine $[-1, 1]\\times [-1, 1]$ et le gradient en un point différent de $(0, 0)$."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# a vous de jouer !"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Faites la même chose avec une estimation du gradient avec la formule de Taylor d'ordre 1."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# a vous de jouer !"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Faites la même chose avec pytorch."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import torch\n",
+    "A = torch.eye(2)\n",
+    "x = torch.tensor([1.0, 1.0], requires_grad=True)\n",
+    "f_x = torch.sum((A @ x)**2)\n",
+    "# a vous de jouer pour calculer le gradient de f_x par rapport a x\n",
+    "# et l'afficher\n",
+    "plt.figure()\n",
+    "plt.axes().set_aspect('equal')\n",
+    "# A vous de completer..."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Essayer avec une matrice aleatoire de taille 2x2. Est-ce que le gradient pointe dans la meme direction ?"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# a vous de jouer !"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Résolutions numérique d'équations\n",
+    "Bibliothèque scipy.optimize pour la résolution numérique d'équations."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from scipy.optimize import fsolve\n",
+    "import matplotlib.pyplot as plt\n",
+    "from numpy import exp, sin"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Équations scalaires non linéaires\n",
+    "Résolution numérique de l'équation scalaire non linéaire $e^{-x}=\\sin(x)$"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "x = np.linspace(0, 10)\n",
+    "plt.plot(x, np.exp(-x), '-+', x, np.sin(x), '-or')\n",
+    "plt.xticks(range(0, 11))\n",
+    "plt.grid()\n",
+    "def f(x):\n",
+    "    return exp(-x)-sin(x)\n",
+    "x = fsolve(f, 3)\n",
+    "print('   x = ', x) \n",
+    "print('f(x) = ', f(x)) \n",
+    "# La solution est-elle correcte ? Est-elle unique ?\n",
+    "# Comment obtenir les autres solutions ? (help)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "A vous de jouer: resoudre $e^{x}=x + 2$"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# tracer les courbes sur -5, 5\n",
+    "# resoudre l'equation"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Équation vectorielle non-linéaire\n",
+    "Résolution numérique du système non lineaire\n",
+    "$e^x + x y^2 =1$, $\\sin(x+y) + x^2 =1$."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def f(p):\n",
+    "    x, y = p[0], p[1]\n",
+    "    q=[exp(x)+x * y*y-1, sin(x+y)+x * x-1]\n",
+    "    return q\n",
+    "x = fsolve(f, (0, 0))\n",
+    "print('   x = ', x) \n",
+    "print('f(x) = ', f(x))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### EDO scalaire du premier ordre\n",
+    "Résoudre l'EDO $x'(t)= \\sin(x(t))-x(t)$"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from scipy.integrate import odeint\n",
+    "def f1(u, t):\n",
+    "    return (np.sin(u)-u)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "u0 = 1 #donnee initiale x(0)=1\n",
+    "Tf= 20   #temps final\n",
+    "Temps = np.linspace(0, Tf, 100)\n",
+    "sol = odeint(f1, u0, Temps)\n",
+    "plt.plot(Temps, sol, '-r')\n",
+    "plt.legend(['x(t)'])\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### EDO vectorielle du premier ordre\n",
+    "Résoudre le système d'EDO (équations de Lorenz).\n",
+    "\\[\\left\\{\\begin{array}{rcl}\n",
+    "x'(t)&=&\\sigma(y(t)-x(t)), \n",
+    " \n",
+    "y'(t)&=&-x(t)z(t)+\\varrho x(t)-y(t)), \n",
+    " \n",
+    "z'(t)&=&x(t)y(t)-\\beta z(t))\n",
+    ".\\end{array}\\right..\\]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from scipy.integrate import odeint\n",
+    "\n",
+    "def f(u, t):  # meme si la fonction ne depend pas de t\n",
+    "    x, y, z = u\n",
+    "    f1 = sigma * (y-x)\n",
+    "    f2=-x * z+r * x-y\n",
+    "    f3 = x * y-b * z\n",
+    "    return (f1, f2, f3)\n",
+    "#def f(u, t, arg=(sigma, r, b)):    # autre possibilite"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "sigma, r, b = 10, 28, 8/3\n",
+    "u0=[0, 1, 1.05]\n",
+    "Tf= 20   #temps final \n",
+    "Temps = np.linspace(0, Tf, 100)\n",
+    "sol = odeint(f, u0, Temps) \n",
+    "plt.plot(Temps, sol[:, 0], '-r', Temps, sol[:, 1], 'b*', Temps, sol[:, 2], 'y+')\n",
+    "plt.legend(['x', 'y'])\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### EDO scalaire du second ordre\n",
+    "On se ramène à une EDO vectorielle du premier ordre. \n",
+    "\n",
+    "Exemple :\n",
+    "$x''(t)+x'(t)+x(t)=1$ et les conditions initiales $x(0)=1$, $x'(0)=2$ qui devient \n",
+    "$u''(t)+Au(t)+b = 0$ avec $u(t)=(x(t), x'(t))^T$, \n",
+    "$A=\\begin{pmatrix} 0 & -1 \n",
+    " 1 & 1 \\end{pmatrix}$ et $b=(0, 1)^T$ et la condition initiale \n",
+    "$u(0)=(1, 2)^T$."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def f2(u, t):  # meme si la fonction ne depend pas de t\n",
+    "    x, y = u\n",
+    "    f1 = y\n",
+    "    f2 = 1-x-y\n",
+    "    return ([f1, f2])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "u0=[1, 2] #donnee initiale\n",
+    "Tf= 10   #temps final\n",
+    "Temps = np.linspace(0, Tf, 100)\n",
+    "sol = odeint(f2, u0, Temps)\n",
+    "plt.plot(Temps, sol[:, 0], '-r', Temps, sol[:, 1], 'b*')\n",
+    "plt.legend([\"x(t)\", \"x'(t)\"])\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Pour aller plus loin: introduction aux réseaux de neurones\n",
+    "Un réseau de neurones est une fonction paramétrique qui s'écrit comme une succession d'opérations linéaires et non-linéaires.\n",
+    "Par exemple, la fonction $f(x) = w \\cdot\n",
+    "\\sigma(Wx + b)$ où $x \\in \\mathbb{R}^n$ est l'entrée, $w \\in \\mathbb{R}^h$, $W \\in \\mathbb{R}^{h \\times n}$ et $b \\in \\mathbb{R}^h$ sont des paramètres, $\\sigma$ est une fonction non-linéaire et $\\cdot$ est le produit scalaire.\n",
+    "\n",
+    "Dans cet exemple $\\sigma$ peut être la fonction sigmoide $\\sigma(x) = \\frac{1}{1 + e^{-x}}$ ou bien la fonction $ReLU$ $\\sigma(x) = \\max(0, x)$.\n",
+    "\n",
+    "Pytorch nous permet de definir facilement cette fonction etde calculer automatiquement le gradient d'une fonction paramétrique $f$ par rapport aux paramètres $w$, $W$ et $b$."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Creation d'un réseau de neurones de R dans R et affichage de sa courbe\n",
+    "Prenons $n = 1$, $h = 10$ , avec comme fonction non-linéaire $\\sigma$ la fonction ReLU.\n",
+    "Initialiser un réseau de neurones $f(x)$ avec les paramètres $w$, $W$ et $b$ prenant des valeurs aléatoires Gaussienne centree reduite.\n",
+    "Afficher le graphe de la fonction $f$ pour $x\\in[-1, 1]$."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "n = 10\n",
+    "w = torch.randn(n) # vecteur de taille n\n",
+    "W = ...\n",
+    "b = ...\n",
+    "x = torch.linspace(-1, 1, 100)\n",
+    "# a vous de jouer !"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Faites la meme chose avec comme fonction non-linéaire $\\sigma$ la fonction sigmoide."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# a vous de jouer !"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Optimisation d'un réseau de neurones (question bonus ouverte)\n",
+    "On voudrait que cette fonction prenne la valeur 0 en 0, 1 en 0.5 et -2 en -0.5. \n",
+    "Pouvez vous élaborer un plan d'attaque ? Comment traduire mathématiquement ce problème ? Comment le résoudre ?"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# a vous de jouer !"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.10.0"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
